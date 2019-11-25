@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>掲示板</h1>
+<p><%= link_to '新しいスレッドを作る', new_board_path, class: 'menu' %></p>
+<br/><br/>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th><h3>スレッド名</h3></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @boards.each do |board| %>
+      <tr>
+        <td><%= link_to '[x️]', board_path(board.id), method: :delete, data: { confirm: "スレッド名: #{board.title}を削除しますか?" }, class: 'delete_button' %></td>
+        <td class="thread_title"><%= board.title %></td>
+<!--        <td class="thread_content"><%#= board.body %></td>-->
+        <td><%= link_to '詳細', board_path(board.id) %></td>
+<!--        <td><%#= link_to '編集', edit_board_path(board.id) %></td>-->
+        <!--削除するときにスレッド名を表示する-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>

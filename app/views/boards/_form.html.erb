@@ -1,0 +1,24 @@
+<%= form_with(model: board, local: true) do |form| %>
+  <% if board.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(board.errors.count, "error") %> prohibited this board from being saved:</h2>
+
+      <ul>
+        <% board.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <h3>スレッド名</h3>
+    <%= form.text_field :title, class: 'thread_title' %>
+  </div>
+
+  <div class="actions">
+    <%#= form.submit %>
+    <button type='submit' value='更新'>更新</button>
+    <button onclick='history.back()'>戻る</button>
+  </div>
+<% end %>
